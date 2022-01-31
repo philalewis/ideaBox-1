@@ -1,5 +1,6 @@
 import React from 'react'
 import Ideas from './Ideas'
+import Form from './Form'
 import './App.css'
 
 class App extends React.Component {
@@ -13,14 +14,16 @@ class App extends React.Component {
     }
   }
 
+  addIdea = newIdea => {
+    this.setState({ ideas: [...this.state.ideas, newIdea] })
+  }
+
   render() {
     return (
       <main className="App">
         <h1>Idea Box</h1>
-        {
-          !this.state.ideas.length &&
-          <h2>There are currently no ideas to display...</h2>
-        }
+        <Form />
+        { !this.state.ideas.length && <h2>There are currently no ideas to display...</h2> }
         <Ideas ideas={this.state.ideas} />
       </main>
     )
