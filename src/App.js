@@ -1,4 +1,5 @@
 import React from 'react'
+import Ideas from './Ideas'
 import './App.css'
 
 class App extends React.Component {
@@ -16,7 +17,11 @@ class App extends React.Component {
     return (
       <main className="App">
         <h1>Idea Box</h1>
-        <p>Some text here</p>
+        {
+          !this.state.ideas.length &&
+          <h2>There are currently no ideas to display...</h2>
+        }
+        <Ideas ideas={this.state.ideas} />
       </main>
     )
   }
