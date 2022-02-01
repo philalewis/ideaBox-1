@@ -14,6 +14,18 @@ class Form extends React.Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
+  submitIdea = event => {
+    event.preventDefault()
+    const newIdea = {
+      id: Date.now(),
+      title: this.state.title,
+      description: this.state.description
+    }
+
+    this.props.addIdea(newIdea)
+    this.setState({ title: '', description: '' })
+  }
+
   render() {
     return (
       <form>
@@ -33,7 +45,7 @@ class Form extends React.Component {
           onChange={event => this.handleChange(event)}
         />
 
-      <button>SUBMIT</button>
+        <button onClick={event => this.submitIdea(event)}>SUBMIT</button>
       </form>
     )
   }

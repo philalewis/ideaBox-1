@@ -18,13 +18,25 @@ class App extends React.Component {
     this.setState({ ideas: [...this.state.ideas, newIdea] })
   }
 
+  // deleteIdea = (id) => {
+  //   console.log(id);
+  //   const filteredIdeas = this.state.ideas.filter(idea => idea.id != id);
+
+  //   this.setState({ ideas: filteredIdeas });
+  // }
+
+  deleteIdea = id => {
+    const filteredIdeas = this.state.ideas.filter(idea => idea.id !== id)
+    this.setState({ ideas: filteredIdeas })
+  }
+
   render() {
     return (
       <main className="App">
         <h1>Idea Box</h1>
-        <Form />
+        <Form addIdea={this.addIdea} />
         { !this.state.ideas.length && <h2>There are currently no ideas to display...</h2> }
-        <Ideas ideas={this.state.ideas} />
+        <Ideas ideas={this.state.ideas} deleteIdea={this.deleteIdea} />
       </main>
     )
   }

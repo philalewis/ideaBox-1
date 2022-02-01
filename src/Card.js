@@ -1,12 +1,12 @@
 import React from 'react'
 import './Card.css'
 
-const Card = (props) => {
+const Card = ({ title, description, id, deleteIdea }) => {
   return (
     <section className="card">
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
-      <button>🗑</button>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <button onClick={() => deleteIdea(id)}>🗑</button>
     </section>
   )
 }
